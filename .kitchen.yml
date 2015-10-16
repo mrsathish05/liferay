@@ -1,0 +1,24 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: ubuntu-14.04
+  - name: ubuntu-12.04
+  - name: centos-6.6
+  - name: centos-7.1
+
+suites:
+  - name: default
+    run_list:
+      - recipe[liferay::default]
+    attributes:
+      java:
+        install_flavor: "oracle"
+        jdk_version: "8"
+        java_home: "/usr/lib/jvm/default-java"
+        oracle:
+          accept_oracle_download_terms: true
